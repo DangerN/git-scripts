@@ -1,0 +1,21 @@
+git_shove () {
+  git add .
+  git commit -m $1
+  git push
+}
+alias gs='git_shove'
+
+git_add_commit () {
+  git add .
+  git commit -m $1
+}
+alias gac='git_add_commit'
+
+git_clone_cd () {
+  ssh_link="$(pbpaste)"
+  git clone $ssh_link
+  if [[ $ssh_link =~ ([A-za-z-]+)\.git$ ]]
+  then cd ${match}
+  fi
+}
+alias gc='git_clone_cd'
